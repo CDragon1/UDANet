@@ -1,0 +1,90 @@
+# Deep Learning Framework
+torch>=1.9.0
+torchvision>=0.10.0
+numpy>=1.21.0
+opencv-python>=4.5.0
+matplotlib>=3.3.0
+seaborn>=0.11.0
+scipy>=1.7.0
+scikit-learn>=1.0.0
+Pillow>=8.0.0
+tqdm>=4.62.0
+PyYAML>=5.4.0
+tensorboard>=2.7.0
+scikit-image>=0.18.0
+pandas>=1.3.0
+
+# Computer Vision
+opencv-python>=4.5.0
+Pillow>=8.0.0
+albumentations>=1.1.0
+
+# Data Processing
+numpy>=1.21.0
+pandas>=1.3.0
+scipy>=1.7.0
+scikit-learn>=1.0.0
+
+# Visualization
+matplotlib>=3.4.0
+seaborn>=0.11.0
+tensorboard>=2.7.0
+
+# Configuration Management
+PyYAML>=5.4.0
+easydict>=1.9.0
+omegaconf>=2.1.0
+
+# Logging and Monitoring
+tqdm>=4.62.0
+colorlog>=6.6.0
+wandb>=0.12.0
+
+# Model Deployment
+onnx>=1.10.0
+onnxruntime>=1.9.0
+
+# Development Tools
+jupyter>=1.0.0
+ipython>=7.25.0
+pre-commit>=2.15.0
+
+# Image Processing
+imageio>=2.9.0
+scikit-image>=0.18.0
+
+# Geometric Computing
+shapely>=1.8.0
+
+# Performance Optimization
+numba>=0.56.0
+
+# Data Augmentation
+imgaug>=0.4.0
+
+# Progress Bars
+rich>=10.0.0
+
+# Experiment Management
+mlflow>=1.20.0
+
+# Hyperparameter Optimization
+optuna>=2.10.0
+
+# Distributed Training
+accelerate>=0.12.0
+
+# Model Interpretability
+shap>=0.40.0
+
+# Unit Testing
+pytest>=6.2.0
+pytest-cov>=3.0.0
+
+# Code Quality
+flake8>=4.0.0
+black>=21.0.0
+isort>=5.9.0
+
+# Additional Dependencies
+colorama>=0.4.4  # For colored log output

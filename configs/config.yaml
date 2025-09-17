@@ -1,0 +1,111 @@
+# UDANet Configuration File
+
+# Basic Configuration
+project_name: "UDANet"
+version: "1.0.0"
+
+# Data Configuration
+data:
+  root_path: "./DataSet2parts"
+  image_size: [512, 512]
+  num_classes: 2  # low density, high density
+  train_split: "train"
+  val_split: "val"
+  test_split: "test"
+
+# Model Configuration
+model:
+  name: "UDANet"
+  backbone: "resnet50"
+  pretrained: true
+  
+  # Density level threshold
+  density_threshold: 10  # less than 10 points is low density
+  
+  # Detection Head Configuration
+  detection:
+    num_anchors: 4
+    hidden_dim: 256
+    
+  # Density Map Configuration
+  density_map:
+    fpn_out_ch: 128
+    unified_channels: 64
+    sigma: 4.0
+    threshold: 10
+
+# Training Configuration
+training:
+  # Basic Parameters
+  batch_size: 8
+  num_epochs: 100
+  num_workers: 4
+  device: "cuda"
+  
+  # Two-stage Training
+  stage1:
+    epochs: 30
+    lr: 1e-4
+    weight_decay: 1e-4
+    freeze_backbone: false
+    
+  stage2:
+    epochs: 70
+    lr: 1e-4
+    weight_decay: 1e-4
+    
+  # Loss Function Weights
+  loss_weights:
+    detection_regression: 1.0
+    detection_classification: 1.0
+    density_map: 0.5
+    density_classification: 0.2
+
+# Optimizer Configuration
+optimizer:
+  name: "Adam"
+  lr: 1e-4
+  weight_decay: 1e-5
+  betas: [0.9, 0.999]
+
+# Learning Rate Scheduler
+scheduler:
+  name: "StepLR"
+  step_size: 50
+  gamma: 0.1
+
+# Data Augmentation
+augmentation:
+  horizontal_flip: 0.5
+  vertical_flip: 0.3
+  rotation: 15
+  brightness: 0.2
+  contrast: 0.2
+  saturation: 0.2
+  hue: 0.1
+
+# Evaluation Configuration
+evaluation:
+  metrics: ["MAE", "RMSE", "Accuracy"]
+  save_predictions: true
+  visualize: true
+
+# Checkpoint Configuration
+checkpoint:
+  save_dir: "./checkpoints"
+  save_freq: 10
+  save_best: true
+  
+# Logging Configuration
+logging:
+  log_dir: "./logs"
+  log_freq: 10
+  tensorboard: true
+  wandb: false
+
+# Inference Configuration
+inference:
+  model_path: "./checkpoints/best_model.pth"
+  input_size: [512, 512]
+  conf_threshold: 0.5
+  nms_threshold: 0.4
